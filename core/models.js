@@ -79,7 +79,7 @@ export const models = {
       msg: '🍡  ¡Hola! +tag\n- Soy *Mochi*, un bot de *WhatsApp* que puede proporcionar información o utilidad al usuario. :)',
       waMenu: 'https://i.postimg.cc/Z5GcPnSv/WA-1786932310725.jpg',
       waImg: 'https://i.postimg.cc/G3gvJtFf/91fa2f7b953260940b42fff8d87b4704.jpg',
-      style: 4,
+      style: 1,
       cover: 'https://i.postimg.cc/G3gvJtFf/91fa2f7b953260940b42fff8d87b4704.jpg',
       icon: null,
       link: 'https://whatsapp.com/channel/0029Vb7Rtoc5K3zQ08ioYc21'
