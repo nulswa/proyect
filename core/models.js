@@ -67,6 +67,7 @@ export const models = {
       noapi: '~ La *API* no dio resultados.',
       sizeBot: '~ El archivo es demasiado pesado. No podrá ser enviado.',
       sucs: '*Success.*',
+      erroBot: '~ Can\'t get metadata.',
       web: 'https://ko-fi.com/farguts',
       botName: '⸔ Mochi - もち ⸕',
       nameMark: 'Mochi',
