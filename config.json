@@ -1,0 +1,27 @@
+{
+   "owner": "5493873655135",
+   "owner_name": "Native - Farguts",
+   "database": "data",
+   "limit": 50,
+   "ram_limit": "900mb",
+   "cpu_limit": false,
+   "cpu_threshold": 85,
+   "max_upload": 900,
+   "max_upload_free": 500,
+   "cooldown": 3,
+   "timer": 180000,
+   "timeout": 1800000,
+   "hold_threshold": 2,
+   "permanent_threshold": 3,
+   "notify_threshold": 4,
+   "banned_threshold": 5,
+   "blocks": ["994", "91", "92"],
+   "evaluate_chars":  ["=>", "~>", "<", ">", "$"],
+   "pairing": {
+      "state": true,
+      "number": 5493873649144,
+      "browser": ["Mac OS", "Chrome", "139.0.7258.164"],
+      "version": [2, 3000, 1045101284],
+      "code": "NODEJAVA"
+   }
+}
