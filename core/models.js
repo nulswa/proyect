@@ -54,13 +54,13 @@ export const models = {
       self: false,
       noprefix: false,
       multiprefix: true,
-      prefix: ['.', '#', '!', '/'],
+      prefix: ['_', '-', '×', '^'],
       toxic: ["ajg", "ajig", "anjas", "anjg", "anjim", "anjing", "anjrot", "anying", "asw", "autis", "babi", "bacod", "bacot", "bagong", "bajingan", "bangsad", "bangsat", "bastard", "bego", "bgsd", "biadab", "biadap", "bitch", "bngst", "bodoh", "bokep", "cocote", "coli", "colmek", "comli", "dajjal", "dancok", "dongo", "fuck", "gelay", "goblog", "goblok", "guoblog", "guoblok", "hairul", "henceut", "idiot", "itil", "jamet", "jancok", "jembut", "jingan", "kafir", "kanjut", "kanyut", "keparat", "kntl", "kontol", "lana", "loli", "lont", "lonte", "mancing", "meki", "memek", "ngentod", "ngentot", "ngewe", "ngocok", "ngtd", "njeng", "njing", "njinx", "oppai", "pantek", "pantek", "peler", "pepek", "pilat", "pler", "pornhub", "pucek", "puki", "pukimak", "redhub", "sange", "setan", "silit", "telaso", "tempek", "tete", "titit", "toket", "tolol", "tomlol", "tytyd", "wildan", "xnxx"],
       online: true,
       onlyprefix: '+',
       owners: ['13238004343', '5493876639332'],
       lastReset: new Date * 1,
-      emoji: '📍',
+      emoji: '⛩️',
       emoji2: '🍡',
       unlink: '~ El enlace ingresado no es válido.',
       nosear: '~ No se han encontrado resultados.',
@@ -82,7 +82,7 @@ export const models = {
       style: 1,
       cover: 'https://i.postimg.cc/G3gvJtFf/91fa2f7b953260940b42fff8d87b4704.jpg',
       icon: null,
-      link: 'https://whatsapp.com/channel/0029Vb7Rtoc5K3zQ08ioYc21'
+      link: 'https://ko-fi.com/farguts'
    }
 }
 
