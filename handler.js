@@ -24,13 +24,15 @@ export default async (client, ctx) => {
       ])
 
       if (m.isGroup && groupMetadata?.participants) {
-         if (m?.sender?.endsWith('lid')) m.sender = groupMetadata.participants?.find(v =>
-            v.lid === m.sender || v.id === m.sender
-         )?.phoneNumber
+         if (m?.sender?.endsWith('lid')) {
+            const found = groupMetadata.participants?.find(v => v.lid === m.sender || v.id === m.sender)
+            m.sender = found?.phoneNumber || m.sender
+         }
 
-         if (m?.quoted?.sender?.endsWith('lid')) m.quoted.sender = groupMetadata.participants?.find(v =>
-            v.lid === m.quoted.sender || v.id === m.quoted.sender
-         )?.phoneNumber
+         if (m?.quoted?.sender?.endsWith('lid')) {
+            const found = groupMetadata.participants?.find(v => v.lid === m.quoted.sender || v.id === m.quoted.sender)
+            m.quoted.sender = found?.phoneNumber || m.quoted.sender
+         }
       }
 
       schema(m, Config)
