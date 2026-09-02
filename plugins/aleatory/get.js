@@ -34,23 +34,13 @@ export const run = {
 let examText = `${Utils.lineBase('Fetch')}
 ${setting.emoji2}  Realiza peticiones *HTTP* para obtener información.
 
-◦  *--less* 
-\t» devuelve body *(texto)*
-
-◦  *--headers* 
-\t» devuelve headers
-
-◦  *--status* 
-\t» devuelve status HTTP
-
-◦  *--cok*
-\t» devuelve cookies
-
-◦  *--json*
-\t» fuerza salida JSON
-
-◦  *--curl*
-\t» permite headers estilo curl
+- *Opciones :*
+◦  *--less :* devuelve body *(texto)*
+◦  *--headers :* devuelve headers
+◦  *--status :* devuelve status HTTP
+◦  *--cok :* devuelve cookies
+◦  *--json :* fuerza salida JSON
+◦  *--curl :* permite headers estilo curl
 
 ${Utils.example(isPrefix, command, 'https://example.com --headers')}`
 
@@ -91,7 +81,8 @@ ${Utils.example(isPrefix, command, 'https://example.com --headers')}`
             let thumb = setting.waImg
             let filename = getFilename(res.headers, url)
             try {
-               return await client.sendFile(m.chat, url, filename, '', m, { document: true, APIC: await Utils.fetchAsBuffer(thumb) }, { jpegThumbnail: await Utils.generateImageThumbnail(thumb) })
+               return await client.sendFile(m.chat, url, '', m)
+               //client.sendFile(m.chat, url, filename, '', m, { document: true, APIC: await Utils.fetchAsBuffer(thumb) }, { jpegThumbnail: await Utils.generateImageThumbnail(thumb) })
             } catch {
                return client.sendMessage(m.chat, { [type.split('/')[0]]: { url }}, { quoted: m })
 }
@@ -104,10 +95,8 @@ ${Utils.example(isPrefix, command, 'https://example.com --headers')}`
             try {
                body = JSON.stringify(JSON.parse(body), null, 2)
             } catch {}
-
-            return client.sendMetaMsg(m.chat, [{ code: { language, code:body.slice(0,65000) }}], m, { title:url, mentions: [m.sender] })
+            return client.sendMetaMsg(m.chat, [{ code: { language, code: body.slice(0, 10000) }}], m, { title:url, mentions: [m.sender] })
          }
-
          return client.reply(m.chat, body.slice(0,65000), m )
       } catch(e) {
          client.reply(m.chat, Utils.jsonFormat(e), m)
