@@ -1,5 +1,5 @@
 import { Utils, Config } from '@neoxr/wb'
-import baileys from '../lib/baileys.js'
+import baileys from '../core/baileys.js'
 import path from 'path'
 import fs from 'node:fs'
 import colors from 'colors'
