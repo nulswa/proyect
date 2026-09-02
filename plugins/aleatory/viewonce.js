@@ -7,7 +7,7 @@ export const run = {
    usage: ['rvo'],
    hidden: ['ver'],
    use: 'reply',
-   category: 'group',
+   category: 'aleatory',
    async: async (m, { client, Utils, setting }) => {
       try {
          if (!m.quoted) return client.reply(m.chat, `${setting.emoji2}  Responda a un archivo *ViewOnce*.`, m)
