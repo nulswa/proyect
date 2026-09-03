@@ -1,5 +1,6 @@
 import { request, saveTemp, deleteTemp } from '../../core/datas/fetcher.js'
 import fetch from 'node-fetch'
+import fs from 'fs/promises'
 
 const max_download_size = 500 * 1024 * 1024
 const meta_msg_limit = 10000  
@@ -100,19 +101,14 @@ ${Utils.example(isPrefix, command, 'https://example.com --headers')}`
 
 if (type.includes('image') || type.includes('video') || type.includes('audio') || type.includes('application')) {
    let filename = getFilename(res.headers, url, type)
-   let buffer
-   try {
-      buffer = await res.buffer()
-   } catch {
-      let data = await res.arrayBuffer()
-      buffer = Buffer.from(data)
-   }
+   let buffer = Buffer.from(await res.arrayBuffer())
    let ext = filename.split('.').pop() || 'bin'
    let tempFile = await saveTemp(buffer, ext)
    try {
-      await client.sendFile(m.chat, tempFile, filename, '', m)
+      let fileBuffer = await fs.readFile(tempFile)
+      await client.sendFile(m.chat, fileBuffer, filename, '', m)
    } finally {
-     await deleteTemp(tempFile)
+      await deleteTemp(tempFile)
    }
    return
 }
