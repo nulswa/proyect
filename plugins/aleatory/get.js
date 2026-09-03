@@ -1,4 +1,4 @@
-import { request, saveTemp, deleteTemp } from './core/datas/fetcher.js'
+import { request, saveTemp, deleteTemp } from '../../core/datas/fetcher.js'
 import fetch from 'node-fetch'
 
 const max_download_size = 500 * 1024 * 1024
