@@ -256,7 +256,7 @@ export const run = {
                },
             }], m, {
                title: 'mochi versión rc14 :)',
-               // bypassDownload: false (hapus comment biar pas ada pesan gak kedip)
+               bypassDownload: true
             })
          }
       } catch (e) {
