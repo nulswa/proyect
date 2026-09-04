@@ -17,9 +17,7 @@
       "cfonts": "3.1.1",
       "html-entities": "^2.5.2",
       "node-gtts": "^2.0.2",
-      "translate-google-api": "1.0.4",
-      "cloudscraper": "^4.6.0",
-      "playwright": "^1.55.0"
+      "translate-google-api": "1.0.4"
    },
    "devDependencies": {
       "css-select": "5.1.0",
