@@ -1,6 +1,5 @@
 import { Client, Config, Utils } from '@neoxr/wb'
 import baileys from './core/engine.js'
-// import './core/proto.js'
 import './not.js'
 import './core/config.js'
 import './core/functions.js'
@@ -9,7 +8,7 @@ import fsPromise from 'fs/promises'
 import colors from 'colors'
 import cron from 'node-cron'
 import extra from './core/listeners-extra.js'
-import { models, structure } from './core/models.js'
+import { models } from './core/models.js'
 import system from './core/adapter.js'
 import pm2 from './core/pm2.js'
 
@@ -20,9 +19,10 @@ const connect = async () => {
          online: true,
          bypass_disappearing: true,
          bot: id => {
+            // Detect message from bot by message ID, you can add another logic here
             return id && (id.startsWith('BAE') || /[-]/.test(id))
          },
-         custom_id: 'mochi', // Prefix for Custom Message ID (automatically detects isBot for itself)
+         custom_id: 'neoxr', // Prefix for Custom Message ID (automatically detects isBot for itself)
          presence: true, // Set to 'true' if you want to see the bot typing or recording
          create_session: {
             type: system.session,
@@ -42,7 +42,7 @@ const connect = async () => {
 
       client.once('connect', async res => {
          try {
-            await system.proxy.init(models, structure, Config.database)
+            await system.proxy.init(models, models.structure, Config.database)
 
             const isEmpty = global.db.users.length === 0 && global.db.chats.length === 0
 
@@ -50,9 +50,9 @@ const connect = async () => {
                const previous = await system.database.fetch()
 
                if (previous && Object.keys(previous).length > 0) {
-                  console.dim('[Proxy DB] Old data found, starting migration...')
-                  await system.proxy.migrate(previous, structure)
-                  console.dim('[Proxy DB] Migration successful!')
+                  console.dim('[Proxy-DB] Old data found, starting migration...')
+                  await system.proxy.migrate(previous, models.structure)
+                  console.dim('[Proxy-DB] Migration successful!')
                }
             }
          } catch (e) {
@@ -87,8 +87,8 @@ const connect = async () => {
 
          cron.schedule('0 12 * * *', async () => {
             if (global?.db?.setting?.autobackup) {
-               const data = await system.proxy.backup(structure, Config.database)
-               const now = new Intl.DateTimeFormat('en-CA', { timeZone: process.env.TZ, hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date()).replace(', ', '_').replace(/:/g, '-')
+               const data = await system.proxy.backup(models.structure, Config.database)
+               const now = new Intl.DateTimeFormat('es-AR', { timeZone: process.env.TZ, hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date()).replace(', ', '_').replace(/:/g, '-')
                const filename = `${Config.database}-${now}.json`
                await fsPromise.writeFile(filename, data, 'utf-8')
                const buffer = await fsPromise.readFile(filename)
