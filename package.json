@@ -1,7 +1,7 @@
 {
    "name": "mochi",
    "version": "^3.0.0-rc.14",
-   "description": ":)",
+   "description": "Pasatiempo  :)",
    "main": "index.js",
    "type": "module",
    "workspaces": ["assets"],
