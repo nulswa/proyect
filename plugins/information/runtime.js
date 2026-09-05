@@ -19,7 +19,7 @@ let context = `${Utils.lineBase(`${setting.nameMark} Runtime`)}
 ◦  *Uptime :* ${uptime}
 ◦  *Version Org:* ${pkg.version}
 ◦  *DB :* ${setting.dataBot}
-◦  *Client :* @whiskeySockets/Baileys
+◦  *Client :* ${setting.cliBot}
 ◦  *Toolkit :* ${setting.toolks}
 
 ${setting.botDesc}`
