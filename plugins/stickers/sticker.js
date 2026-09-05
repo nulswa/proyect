@@ -3,40 +3,32 @@ import { parseFlags, applyTransformation, isImage, FLAG_MAP } from '@mochi/toolk
 const enlaceSospechosoXd = /^https?:\/\/\S+\.(jpe?g|png|gif|webp|mp4)(\?.*)?$/i
 const limteXd = 10
 
-function buildMenu(setting, isPrefix, Utils, command) {
-   const shapes = []
-   const effects = []
-   const seen = new Set()
-
-   for (const [flag, { type, val }] of Object.entries(FLAG_MAP)) {
-      if (seen.has(val + type)) continue
-      seen.add(val + type)
-      if (type === 'shape') shapes.push(`*${flag} :* ${val}`)
-      if (type === 'effect') effects.push(`*${flag} :* ${val}`)
-   }
-
-   return `${Utils.lineBase('Sticker : Edition')}
-> ${setting.emoji2}  Crea stickers fácilmente o personalízalos aplicar formas nuevas.
-
-- *Formas :*
-${shapes.join('\n')}
-
-- *Efectos :*
-${effects.join('\n')}
-
-> ${setting.emoji}  Puedes mezclar las formas y efectos.
-- *Las formas y efectos solo aplican para imágenes.*
-
-${Utils.example(isPrefix, command, '-c')}`
-}
-
 export const run = {
    usage: ['sticker'],
    hidden: ['s', 'sk'],
    use: 'reply',
    category: 'stickers',
    async: async (m, { client, text, setting, Utils, isPrefix, command }) => {
-      const prefix = isPrefix
+let examText = `${Utils.lineBase('Sticker : Edition')}
+> ${setting.emoji2}  Crea stickers fácilmente o personalízalos para aplicar formas nuevas.
+
+- *Formas :*
+◦  *-c :* forma redondeada
+◦  *-e :* forma de estrella
+◦  *-co :* forma de corazon
+◦  *-h :* forma en hexagonal
+◦  *-t :* forma en triángulo
+
+- *Efectos :*
+◦  *-d :* usar efecto blur
+◦  *-g :* cambiar a negro y blanco
+◦  *-i :* invertir colores
+◦  *-v :* invertir la imagen
+
+> ${setting.emoji}  Puedes mezclar las formas y efectos.
+- *Las formas y efectos solo aplican para imágenes.*
+
+${Utils.example(isPrefix, command, '-c')}`
       const args = text?.trim().split(/\s+/).filter(Boolean) || []
 
       const urlArg = args.find(a => enlaceSospechosoXd.test(a)) || null
@@ -53,7 +45,7 @@ export const run = {
       const tieneMedia = esImg || esVid || esSticker
 
       if (!tieneMedia && !urlArg) {
-         return client.reply(m.chat, buildMenu(setting, isPrefix, Utils, command), m)
+         return client.reply(m.chat, examText, m)
       }
 
       const packname = setting.sk_pack
