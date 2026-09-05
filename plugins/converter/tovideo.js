@@ -46,7 +46,7 @@ export const run = {
          }
       }
       if (mtype !== 'videoMessage') {
-         return client.reply(m.chat, `${exif.emoji}  Responda a un video para aplicar el efecto.`, m)
+         return client.reply(m.chat, `${setting.emoji2}  Responda a un video para aplicar el efecto.`, m)
       }
       let i, o
       try {
