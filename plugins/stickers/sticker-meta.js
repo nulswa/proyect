@@ -1,6 +1,6 @@
 export const run = {
-   usage: ['sticker-lock', 'sticker-prem', 'sticker-ai'],
-   hidden: ['s-lock', 's-prem', 's-ai'],
+   usage: ['s-lock', 's-prem', 's-ai'],
+   use: 'reply',
    category: 'stickers',
    async: async (m, { client, command, setting, Utils }) => {
       try {
@@ -12,7 +12,7 @@ export const run = {
             await client.sendReact(m.chat, setting.timeLoad, m.key)
             client.sendSticker(m.chat, buffer, m, {
                packname: setting.sk_pack,
-               author: setting.sk_author, ...(command === 'stclock' ? { lock: true } : command === 'stcprem' ? { premium: true } : command === 'stcai' ? { meta: true } : {} )
+               author: setting.sk_author, ...(command === 's-lock' ? { lock: true } : command === 's-prem' ? { premium: true } : command === 's-ai' ? { meta: true } : {} )
             })
          } else if (/video/.test(mime)) {
             if ((q.msg || q).seconds > 10) return client.reply(m.chat, `${setting.emoji}  El vídeo no debe durar más de *10* segundos.`, m)
@@ -21,7 +21,7 @@ export const run = {
             await client.sendReact(m.chat, setting.timeLoad, m.key)
             client.sendSticker(m.chat, buffer, m, {
                packname: setting.sk_pack,
-               author: setting.sk_author, ...(command === 'stclock' ? { lock: true } : command === 'stcprem' ? { premium: true } : command === 'stcai' ? { meta: true } : {} )
+               author: setting.sk_author, ...(command === 's-lock' ? { lock: true } : command === 's-prem' ? { premium: true } : command === 's-ai' ? { meta: true } : {} )
             })
          } else client.reply(m.chat, `${setting.emoji2}  Responda a un vídeo o imagen.`, m)
       } catch (e) {
