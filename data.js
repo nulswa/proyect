@@ -22,7 +22,7 @@ const connect = async () => {
             // Detect message from bot by message ID, you can add another logic here
             return id && (id.startsWith('BAE') || /[-]/.test(id))
          },
-         custom_id: 'neoxr', // Prefix for Custom Message ID (automatically detects isBot for itself)
+         custom_id: 'mochi', // Prefix for Custom Message ID (automatically detects isBot for itself)
          presence: true, // Set to 'true' if you want to see the bot typing or recording
          create_session: {
             type: system.session,
