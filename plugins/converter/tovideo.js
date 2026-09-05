@@ -63,7 +63,7 @@ export const run = {
             const speed = parseFloat(text)
          const prefix = isPrefix || '.'
       const examText = `${Utils.lineBase('Speed')}
-> ${setting.emoji2}  Aplique una velocidad para continuar con el video.
+> ${setting.emoji2}  Proporciona la velocidad del video.
 
 - *Opciones :*
 ◦  *0.25 :* Camara lenta *x4*
@@ -71,8 +71,6 @@ export const run = {
 ◦  *1.5 :* Camara rapida *x1.5*
 ◦  *2 :* Camara rapida *x2*
 ◦  *3 :* Camara rapida *x3*
-
-${setting.emoji}  Recuerde responder solo a un video para aplicar el efecto.
 
 ${Utils.example(isPrefix, command, '0.5')}`
             if (!speeds.includes(speed)) return client.reply(m.chat, examText, m)
@@ -84,7 +82,7 @@ ${Utils.example(isPrefix, command, '0.5')}`
          }
          return await client.sendFile(m.chat, readFileSync(o), 'video.mp4', '', m, { mimetype: 'video/mp4' })
       } catch (e) {
-         console.log('[reverse/velv]', e)
+         console.log('[reverse/speed]', e)
          return client.reply(m.chat, Utils.jsonFormat(e), m)
       } finally {
          await clean(i, o)
