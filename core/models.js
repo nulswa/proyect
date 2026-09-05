@@ -89,7 +89,7 @@ export const models = {
          style: 4,
          cover: 'https://i.postimg.cc/G3gvJtFf/91fa2f7b953260940b42fff8d87b4704.jpg',
          icon: 'https://i.postimg.cc/JnfcF28x/Chat-GPT-Image-5-sept-2026-12-28-11-p-m.png',
-         link: 'https://whatsapp.com/channel/0029Vb7Rtoc5K3zQ08ioYc21'
+         link: 'https://ko-fi.com/farguts_native'
       }
    },
    get structure() {
