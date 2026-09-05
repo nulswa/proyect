@@ -37,7 +37,7 @@ export const run = {
             o = await tempFile('mp4')
             writeFileSync(i, buffer)
             execSync(`ffmpeg -y -f lavfi -i color=c=black:s=1280x720:r=1 -i "${i}" -shortest -c:v libx264 -c:a aac -strict experimental "${o}"`, { stdio: 'pipe', timeout: 60000 })
-            return await client.sendFile(m.chat, readFileSync(o), 'tovideo.mp4', '', m { mimetype: 'video/mp4' })
+            return await client.sendFile(m.chat, readFileSync(o), 'tovideo.mp4', '', m, { mimetype: 'video/mp4' })
          } catch (e) {
             console.log('[tovideo]', e)
             return client.reply(m.chat, Utils.jsonFormat(e), m)
@@ -63,7 +63,7 @@ export const run = {
             const speed = parseFloat(text)
          const prefix = isPrefix || '.'
       const examText = `${Utils.lineBase('Speed')}
-${setting.emoji2}  Aplique una velocidad para continuar con el video.
+> ${setting.emoji2}  Aplique una velocidad para continuar con el video.
 
 - *Opciones :*
 ◦  *0.25 :* Camara lenta *x4*
@@ -72,12 +72,12 @@ ${setting.emoji2}  Aplique una velocidad para continuar con el video.
 ◦  *2 :* Camara rapida *x2*
 ◦  *3 :* Camara rapida *x3*
 
-${setting.emoji}  Recuerde responder a un video para aplicar el efecto.
+${setting.emoji}  Recuerde responder solo a un video para aplicar el efecto.
 
 ${Utils.example(isPrefix, command, '0.5')}`
-            if (!speeds.includes(speed)) return client.reply(m.chat, menuXd, m)
+            if (!speeds.includes(speed)) return client.reply(m.chat, examText, m)
 
-            await client.sendReact(m.chat, exif.timeLoad, m.key)
+            await client.sendReact(m.chat, setting.timeLoad, m.key)
             const vf = `setpts=${(1 / speed).toFixed(4)}*PTS`
             const af = `atempo=${speed <= 0.5 ? 0.5 : speed >= 2 ? 2 : speed}`
             execSync(`ffmpeg -y -i "${i}" -vf "${vf}" -af "${af}" "${o}"`, { stdio: 'pipe', timeout: 60000 })
