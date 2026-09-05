@@ -1,6 +1,6 @@
 {
    "owner": "5493873655135",
-   "owner_name": "Native - Farguts",
+   "owner_name": "Farguts Native",
    "database": "data",
    "limit": 50,
    "ram_limit": "900mb",
@@ -22,6 +22,6 @@
       "number": 5493873649144,
       "browser": ["Mac OS", "Chrome", "139.0.7258.164"],
       "version": [2, 3000, 1045101284],
-      "code": "NODEJAVA"
+      "code": "FARGNORM"
    }
 }
