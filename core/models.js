@@ -75,7 +75,7 @@ export const models = {
          sizeBot: '~ El archivo es demasiado pesado. No podrá ser enviado.',
          sucs: '*Success.*',
          erroBot: '~ Can\'t get metadata.',
-         web: 'https://ko-fi.com/farguts',
+         web: 'https://ko-fi.com/farguts_native',
          botName: '⸔ Mochi - もち ⸕',
          nameMark: 'Mochi',
          timeLoad: '⛩️',
